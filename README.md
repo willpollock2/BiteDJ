@@ -1,0 +1,2 @@
+# BiteDJ
+Bite Django App
