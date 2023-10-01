@@ -1,0 +1,96 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div id="pizzaData"></div>
+
+<style>
+   /* Your existing styles remain here, you can add more if needed */
+</style>
+
+<div class="header-container">
+    <h1>Search Results</h1>
+    <form method="post" action="" id="foodTypeForm" class="food-form">
+        {% csrf_token %}
+        {{ form.food_type }}
+    </form>
+</div>
+
+<div class="scrollable-table">
+    <table>
+        <thead>
+        <tr>
+            <th data-sort-key="Rating">Rating</th>
+            <th data-sort-key="Business">Business</th>
+            <th data-sort-key="Item">Item</th>
+            <th data-sort-key="EstPrice">Est. Price</th>
+            <th data-sort-key="Dist">Dist
+                <div class="th-subtitle">(mi.)</div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for food in food_data %}
+            <tr>
+                <td>{{ food.rating }}</td>
+                <td>{{ food.business }}</td>
+                <td>{{ food.name }}</td>
+                <td>${{ food.est_price }}</td>
+                <td>{{ food.distance|floatformat:"1" }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        let headers = document.querySelectorAll('th');
+        let tableBody = document.querySelector('tbody');
+        let rows = Array.from(tableBody.rows);
+        let sortDirection = {};
+
+        headers.forEach(header => {
+            let key = header.dataset.sortKey;
+            sortDirection[key] = 0;
+            
+            header.addEventListener('click', function() {
+                let direction = sortDirection[key] === 2 ? 0 : sortDirection[key] + 1;
+                sortDirection[key] = direction;
+
+                rows.sort((a, b) => {
+                    let aValue = a.cells[header.cellIndex].textContent.trim();
+                    let bValue = b.cells[header.cellIndex].textContent.trim();
+
+                    if (!isNaN(aValue)) aValue = parseFloat(aValue.replace('$',''));
+                    if (!isNaN(bValue)) bValue = parseFloat(bValue.replace('$',''));
+
+                    if (direction === 0) return 0;
+                    if (direction === 1) return aValue > bValue ? 1 : -1;
+                    if (direction === 2) return aValue < bValue ? 1 : -1;
+                });
+
+                tableBody.append(...rows);
+            });
+        });
+
+        // Existing dropdown logic
+        const form = document.getElementById('foodTypeForm');
+        const dropdown = form.querySelector('select');
+
+        dropdown.addEventListener('change', function() {
+            form.submit();
+        });
+    });
+</script>
+
+<!-- Your Other Elements and Scripts Remain Here -->
+<div>
+    <canvas id="pizzaChart" style="width: 100%; height: 600px;"></canvas>
+</div>
+<div id="map" style="height: 400px; width: 100%; margin-bottom: 20px;"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNBqWn9Biaw8iD3I1ImqCcjQtH92LgDsY&callback=initMap" async defer></script>
+<script src="{% static 'home/js/app.js' %}"></script>
+
+{% endblock content %}

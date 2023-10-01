@@ -1,0 +1,303 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .card {
+        background-color: #1f1f1f; /* Darker card background */
+        margin-bottom: 15px;
+        margin-top: 15px;
+        border-radius: 10px; /* Rounded corners */
+        overflow: hidden; /* Keeps image within rounded corners */
+        box-shadow: 0px 4px 6px #00000099; /* Subtle shadow */
+        transition: transform .2s; /* Animation for hover effect */
+    }
+
+    .card:hover {
+        transform: scale(1.05); /* Enlarges cards on hover */
+    }
+
+    .h1 {
+        text-align: center;
+        font-size: medium;
+    }
+
+    .card-img-container {
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card-img-container img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100%;
+        width: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .card-body {
+    padding-top: 0px; /* Adjust this value as needed */
+    padding-bottom: 0px; /* Adjust this value as needed */
+    padding-right: 20px; /* Adjust this value as needed */
+    padding-left: 20px; /* Adjust this value as needed */
+    }
+
+    .card-img-top {
+        object-fit: contain; /* adjust as needed */
+        width: 100%; /* makes image width 100% of the container */
+        height: 300px; /* adjust as needed */
+    }
+
+
+
+    .card-title {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .card-text {
+        font-size: 0.9em;
+        line-height: 1.6;
+    }
+
+
+    .row {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .col-md-4 {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .scrollable {
+        display: flex;
+        padding: 10px;
+    }
+
+    .scrollable-item {
+        flex: 0 0 auto; /* Do not grow, do not shrink, initial width auto */
+        margin-right: 10px; /* Spacing between items */
+        text-align: center; /* Center the discount text below the logo */
+    }
+
+    .logo-container-home {
+        width: 60px; /* Fixed width */
+        height: 60px; /* Fixed height */
+        border-radius: 50%; /* Circle shape */
+        overflow: hidden; /* Keep content within border-radius */
+        background-color: #e4e4e4;
+        margin-right: 5px;
+        border: 3px solid #020202;
+        box-shadow: 0px 0px 5px #363636;
+    }
+
+    .company-logo {
+        object-fit: cover; /* Cover the container */
+        zoom: 150%;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /* Add these styles to your existing CSS */
+    .scrollable-container {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        align-items: center;
+        height: 100px; /* Adjust as per your need */
+        padding: 3px;
+        scroll-behavior: smooth;
+        margin-top: 10px;
+        margin-right: 10px;
+        padding-bottom: 10px;
+    }
+
+    .scrollable-container::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .scrollable-container::-webkit-scrollbar-thumb {
+        background-color: #555555;
+        border-radius: 4px;
+    }
+
+    .scrollable-container::-webkit-scrollbar-thumb:hover {
+        background-color: #666666;
+    }
+
+    .scrollable-container::-webkit-scrollbar-track {
+        background: #2a2a2a;
+    }
+
+    .logo-item {
+        flex: 0 0 auto;
+        margin-right: 15px; /* Space between logos */
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%; /* To make the logo container circular */
+        overflow: hidden;
+    }
+
+    .logo-item img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+    }
+
+    .discount {
+        position: relative;
+        bottom: 0px; /* Adjust as needed */
+        right: 0;
+        background-color: #363636; /* Dark background for the discount label */
+        color: #e6e6e6; /* Light color text for the discount label */
+        padding: 2px 5px;
+        border-radius: 2px;
+        font-size: 10px; /* Small font size for the discount label */
+    }
+
+
+
+    
+</style>
+<h1 class="h1">Recommended</h1>
+    <!-- Top invisible container for suggested restaurants -->
+    <div class="scrollable-container">
+        <div class="scrollable">
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/Buffalo-Wild-Wings-Symbol.png' %}" alt="Company 1 Logo" class="company-logo">
+                </div>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/Panera-Bread-Logo.png' %}" alt="Company 1 Logo" class="company-logo">
+                </div>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/1200px-Panda_Express_logo.svg.png' %}" alt="Company 1 Logo" class="company-logo">
+                </div>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/5842996fa6515b1e0ad75add.png' %}" alt="Company 1 Logo" class="company-logo">
+                </div>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/png-transparent-chick-fil-a-logo-chicken-sandwich-chick-fil-a-breakfast-fast-food-50-food-text-fast-food-restaurant.webp' %}" alt="Company 1 Logo" class="company-logo">
+                </div>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/Taco-Bell-Logo-1994.png' %}" alt="Company 1 Logo" class="company-logo">
+                </div>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/5842996fa6515b1e0ad75add.png' %}" alt="Company 1 Logo" class="company-logo">
+                </div>
+            </div>
+            <!-- ...repeat for each suggested restaurant... -->
+        </div>
+    </div>
+    <h1 class="h1">Discounts</h1>
+
+    <!-- Second invisible container for companies with discounts -->
+    <div class="scrollable-container">
+        <div class="scrollable">
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/5842996fa6515b1e0ad75add.png' %}" alt="Company 2 Logo" class="company-logo">
+                </div>
+                <p class="discount">10%</p>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/Dominos-Pizza-Logo-1996-2012.png' %}" alt="Company 2 Logo" class="company-logo">
+                </div>
+                <p class="discount">6%</p>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/chipotle-mexican-grill-logo-png-transparent.png' %}" alt="Company 2 Logo" class="company-logo">
+                </div>
+                <p class="discount">BOGO!</p>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/Wendys-Logo.png' %}" alt="Company 2 Logo" class="company-logo">
+                </div>
+                <p class="discount">15%</p>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/Buffalo-Wild-Wings-Symbol.png' %}" alt="Company 2 Logo" class="company-logo">
+                </div>
+                <p class="discount">5%</p>
+            </div>
+            <div class="scrollable-item">
+                <div class="logo-container-home">
+                    <img src="{% static 'home/images/company_logos/1200px-Panda_Express_logo.svg.png' %}" alt="Company 2 Logo" class="company-logo">
+                </div>
+                <p class="discount">10%</p>
+            </div>
+            <!-- ...repeat for each company with discount... -->
+        </div>
+    </div>
+    <h1 class="h1">Trending</h1>
+    <div class="row">
+        <!-- Card 3 -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="{% static 'home/images/pexels-photo-4393021.jpeg' %}" alt="Food Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Update: New Bites in Town</h5>
+                    <p class="card-text">Explore the newly opened eateries in town offering mouth-watering bites. Check them out!</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="{% static 'home/images/pexels-ash-376464.jpg' %}" alt="Food Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Promotion: 50% Off on Your Next Bite</h5>
+                    <p class="card-text">Enjoy a delectable meal at half the price. Don't miss this exciting promotion!</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 1 -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="{% static 'home/images/Essential-Guide-to-Healthy-Eating-2-1200x900.png' %}" alt="Food Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">New Article: The Best Bite</h5>
+                    <p class="card-text">Discover the amazing flavors of local cuisine. Dive into the world of exquisite bites!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

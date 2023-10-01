@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite</title>
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            background-color: white; /* Set the background color of the screen to white */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0; /* Resetting margin to remove any unwanted space */
+        }
+        .iphone {
+            width: 375px; /* Width of iPhone X */
+            height: 812px; /* Height of iPhone X */
+            border-radius: 40px; /* Rounded corners */
+            position: relative;
+            overflow: hidden;
+            background-color: black;
+            border: 10px solid #000000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Optional: for better 3D effect */
+        }
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 209px;
+            height: 30px;
+            background-color: black;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: white;
+        }
+        .container {
+            padding: 5px 5px; /* Adjusted padding */
+            height: 665px;
+            position: center;
+        }
+        nav {
+            height: 60px;
+            align-items: flex-end;
+            padding-bottom: 9px;
+            background-color: transparent;
+        }
+        .wifi, .battery, .time {
+        position: absolute;
+        top: 10px;
+        color: white;
+        font-size: 12px; /* You can change it according to your need */
+        }
+        .wifi {
+            right: 40px;
+        }
+        .battery {
+            right: 20px;
+        }
+        .time {
+        left: 40px;
+        transform: translateX(-50%);
+        }
+        .user-icon-container i {
+            color: white; /* Change to the desired color */
+            font-size: 18px; /* Change to the desired size */
+            padding: 5px; /* Change to the desired padding */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="iphone">
+        <span class="wifi">📶</span> <!-- Wi-Fi Symbol -->
+        <span class="time">12:34</span> <!-- Time -->
+        <span class="battery">🔋</span> <!-- Battery Symbol -->
+
+        <div class="notch"></div>
+
+        <nav>
+            <div class="user-icon-container">
+                <i class="fas fa-user"></i>
+            </div>                       
+            <input type="text" id="search-bar" placeholder="Search by Food Type or Restaurant">
+        </nav>
+        
+        <div class="container">
+            {% block content%}
+            
+            {% endblock %}
+        </div> 
+
+        <div class="lower-nav">
+            <a href="{% url 'home' %}"><i class="fas fa-home"></i></a>
+            <a href="{% url 'index' %}"><i class="fas fa-chart-bar"></i></a>
+            <div class="logo-container">
+                <a href="{% url 'survey' %}">
+                    <img src="{% static 'home/images/BITE-removebg-preview.png' %}" alt="Logo" id="nav-logo">
+                </a>
+            </div>
+            <a href="{% url 'social' %}"><i class="fas fa-newspaper"></i></a>
+            <a href="{% url 'promotions' %}"><i class="fas fa-tag"></i></a>
+        </div> 
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Initialization Animation</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevent scroll */
+        }
+
+        .screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: radial-gradient(circle, #222, black);
+        }
+
+        .logo-container {
+            position: relative;
+            overflow: hidden; /* Clip the shimmer effect */
+        }
+
+        .logo-container img {
+            opacity: 0;
+            animation: fadeInScaleRotate 2.5s forwards, shimmer 2s infinite 2s;
+            width: 100px;
+            height: auto;
+            filter: brightness(1.2); /* Make logo a bit brighter */
+        }
+
+        @keyframes fadeInScaleRotate {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) rotate(-10deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) rotate(10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+            transform: skewX(-20deg);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            opacity: 0;
+            animation-delay: 1s;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="screen">
+        <div class="logo-container">
+            <img src="BITE-removebg-preview (1).png" alt="Logo" id="nav-logo">
+        </div>
+    </div>
+</body>
+
+</html>

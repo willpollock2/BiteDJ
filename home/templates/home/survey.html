@@ -1,0 +1,159 @@
+{% extends 'home/base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+
+
+    #survey-page {
+        padding: 20px;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .slider-container {
+        margin: 30px 0;
+    }
+
+    .slider-label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .range-input {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .range-input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #000;
+        cursor: pointer;
+    }
+
+    .range-input::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: #000;
+        cursor: pointer;
+    }
+
+    .slider-value {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .options-container {
+        display: flex;
+        border: 1px solid #444;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .option {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        background-color: #444;
+        transition: background-color 0.3s ease;
+    }
+
+    .option:hover {
+        background-color: #555;
+    }
+
+    .option.selected {
+        background-color: #333;
+    }
+
+    .range-labels {
+        display: flex;
+        justify-content: space-between;
+    }
+    .search-button {
+        display: block; /* Make the button a block element */
+        margin: 20px auto; /* Center the button horizontally and add margin above and below */
+        padding: 10px 20px; /* Add padding to the button */
+        background-color: #292929; /* Set background color to black */
+        color: #fff; /* Set text color to white */
+        border: none; /* Remove border */
+        cursor: pointer; /* Change cursor style to pointer on hover */
+        font-size: 16px; /* Set font size */
+        text-align: center; /* Center the text inside the button */
+        border-radius: 5px; /* Optional: for rounded corners */
+    }
+
+    .search-button:hover {
+        background-color: #444; /* Change background color on hover */
+    }
+
+    .search-container {
+        text-align: center; /* Center the button container */
+    }
+</style>
+
+<div id="survey-page">
+    <div class="slider-container">
+        <label class="slider-label" for="distance">Distance:</label>
+        <input type="range" id="distance" name="distance" min="0" max="20" value="10" class="range-input">
+        <div class="range-labels">
+            <span>0 mi</span> <span>20 mi</span>
+        </div>
+        <div id="distance-value" class="slider-value">10 mi</div>
+    </div>
+
+    <div class="slider-container">
+        <label class="slider-label" for="price">Price:</label>
+        <input type="range" id="price" name="price" min="0" max="60" value="25" class="range-input">
+        <div class="range-labels">
+            <span>$0</span> <span>$60</span>
+        </div>
+        <div id="price-value" class="slider-value">$25</div>
+    </div>
+
+    <div class="options-container">
+        <div class="option selected" onclick="selectOption(this)">Dine In</div>
+        <div class="option" onclick="selectOption(this)">Dine Out</div>
+    </div>
+    <div class="search-container">
+        <a href="{% url 'index' %}">
+            <button type="button" class="search-button">Search</button>
+        </a>
+    </div>
+</div>
+
+<script>
+    function updateSliderValue(sliderId, displayId, isDollar = false, isMiles = false) {
+        const slider = document.getElementById(sliderId);
+        const display = document.getElementById(displayId);
+        let value = slider.value;
+        if(isDollar) value = '$' + value;
+        if(isMiles) value = value + ' mi';
+        display.innerHTML = value;
+        slider.oninput = function() {
+            let value = this.value;
+            if(isDollar) value = '$' + value;
+            if(isMiles) value = value + ' mi';
+            display.innerHTML = value;
+        }
+    }
+
+    function selectOption(element) {
+        const sibling = element.previousElementSibling || element.nextElementSibling;
+        sibling.classList.remove('selected');
+        element.classList.add('selected');
+    }
+
+    // Initialize the slider value displays
+    updateSliderValue('distance', 'distance-value', false, true);
+    updateSliderValue('price', 'price-value', true, false);
+</script>
+
+{% endblock %}

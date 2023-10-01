@@ -1,0 +1,128 @@
+{% extends 'home/base.html'%}
+
+{% load static %}
+
+{% block content %}
+<style>
+
+    .profile-picture {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        object-position: center;
+        border: 2px solid #242424;
+        position: relative;
+        top: 3px;
+        left: 3px;
+    }
+
+    .post {
+        display: flex;
+        align-items: start;
+        padding: 0px;
+        position: relative;
+        transition: background 0.3s;
+    }
+
+    .post:hover {
+        background-color: #333;
+    }
+
+    .post:after {
+        content: '';
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        bottom: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #333, transparent);
+    }
+
+    .post-content {
+        margin-left: 10px;
+        margin-right: 20px;
+        margin-bottom: 2px;
+    }
+
+    .profile-name {
+        font-weight: bold;
+        margin-bottom: 0px;
+    }
+
+    #social-page {
+        padding: 0px;
+        overflow-x: hidden;
+    }
+
+    .commentary {
+        color: #b3b3b3;
+    }
+
+    .post-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    }
+
+</style>
+
+
+<div id="social-page">
+    <!-- Post 1 -->
+    <div class="post">
+        <img src="{% static 'home/images/willsmif.jpg' %}" alt="Profile Picture" class="profile-picture">
+        <div class="post-content">
+            <p class="profile-name">Keep My Food Out Of Your Mouth!</p>
+            <p class="commentary">Just tried a new local restaurant! The bite was amazing! #Bite</p>
+            <img src="{% static 'home/images/pork.jpg' %}" alt="Post Image" class="post-image">
+        </div>
+    </div>
+    <!-- Post 2 -->
+    <div class="post">
+        <img src="{% static 'home/images/actress-Margot-Robbie-Australian-2018.webp' %}" alt="Profile Picture" class="profile-picture">
+        <div class="post-content">
+            <p class="profile-name">MarbotGrobbie</p>
+            <p class="commentary">The street food in this town has the best bite! #Bite</p>
+        </div>
+    </div>
+    <!-- Post 3 -->
+    <div class="post">
+        <img src="{% static 'home/images/spoderman.jpg' %}" alt="Profile Picture" class="profile-picture">
+        <div class="post-content">
+            <p class="profile-name">Lord of the Fries</p>
+            <p class="commentary">Found a hidden gem today. Amazing experiences and a delicious bite! #Bite</p>
+        </div>
+    </div>
+    <!-- Post 4 -->
+    <div class="post">
+        <img src="{% static 'home/images/realbradpitt.jpg' %}" alt="Profile Picture" class="profile-picture">
+        <div class="post-content">
+            <p class="profile-name">Bratty Brad</p>
+            <p class="commentary">Can't get enough of the local food here. Every bite is a new experience! #Bite</p>
+            <img src="{% static 'home/images/healthyfood.jpg' %}" alt="Post Image" class="post-image">
+        </div>
+    </div>
+    <!-- Post 5 -->
+    <div class="post">
+        <img src="{% static 'home/images/download.jpg' %}" alt="Profile Picture" class="profile-picture">
+        <div class="post-content">
+            <p class="profile-name">CulinaryChris</p>
+            <p class="commentary">Explored a new cafe today. The bite is worth the hype! #Bite</p>
+        </div>
+    </div>
+    <!-- Post 6 -->
+    <div class="post">
+        <img src="{% static 'home/images/willsmif.jpg' %}" alt="Profile Picture" class="profile-picture">
+        <div class="post-content">
+            <p class="profile-name">DelishDanny</p>
+            <p class="commentary">The bite at this place brings so much joy. Highly recommended! #Bite</p>
+        </div>
+    </div>
+    <!-- ... -->
+</div>
+
+
+
+{% endblock %}
