@@ -1,0 +1,238 @@
+@media only screen and (max-width: 480px) {
+    /* Mobile-specific styles */
+    body {
+        margin: 20px;
+    }
+
+    nav {
+        flex-direction: column; /* stack items vertically for mobile */
+    }
+
+    .logo-container {
+        margin-bottom: 10px;
+    }
+
+    select {
+        margin-bottom: 10px; /* Adds space between selects on mobile */
+    }
+}
+
+h1 {
+    text-align: center;
+    margin: 5px 0;
+    font-weight: 300; /* Lighter font weight makes it look sleek */
+    letter-spacing: 1.5px; /* A bit of letter spacing for modern touch */
+    font-size: 20px; /* Slightly smaller size for sleekness */
+    color: #ffffff; /* Keeping the light color for text */
+    padding: 5px 0; /* Adjust padding to preference */
+    border-bottom: 2px solid #444; /* Adds a subtle line below the title */
+    width: fit-content; /* Ensures the border only extends as far as the title text */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+h2 {
+    text-align: center;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #070707; /* Dark background for the body */
+    color: #e6e6e6; /* Light color for text */
+    max-width: 480px; /* setting a max-width to simulate mobile view */
+    margin: 0 auto; /* centers the content */
+    padding: 20px 40px;
+    font-weight: 300;
+}
+
+.scrollable-table {
+    height: 370px;
+    overflow-y: auto; /* to enable vertical scrolling */
+    width: 100%; /* so it takes full width of its container */
+    border-radius: 6px; /* this is optional, but ensures consistency with your table design */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* this is also optional but retains your design's shadow */
+    font-size: 40;
+}
+
+
+.scrollable-table::-webkit-scrollbar {
+    width: 8px; /* Adjust the width for desired thickness */
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+    background: #2a2a2a; /* Dark background for the tracking area */
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+    background-color: #555555; /* Slightly lighter color for the scroll thumb */
+    border-radius: 4px; /* Smooth rounded edges */
+}
+
+.scrollable-table::-webkit-scrollbar-thumb:hover {
+    background-color: #666666; /* A bit lighter when hovered for user feedback */
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* You can change it to space-between if you want to separate them more */
+}
+
+.food-form {
+    display: flex;
+}
+
+table {
+    margin: 0;
+    border-collapse: collapse;
+    background-color: #333333; /* Darker background for the table */
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+
+th {
+    background-color: #444444; /* Even darker for table headers */
+    font-size: 12px;
+}
+
+.th-subtitle {
+    font-size: 10px; /* Adjust as desired */
+}
+
+
+th, td {
+    padding: 10px 10px;
+    text-align: left;
+    border-bottom: 1px solid #555555; /* Border color for dark mode */
+    color: #e6e6e6; /* Light color for text */
+    height: 30px;          /* Add this line */
+    overflow: hidden;      /* Add this line */
+    vertical-align: middle; /* Add this line if you want vertical centering */
+    font-size: 15px;
+}
+
+tr:hover {
+    background-color: #2a2a2a; /* Slightly lightening row on hover for better UX */
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    background-color: #333333; /* Dark background for the chart area */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 600px;  /* match the table's width */
+    max-height: 400px;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2d2d2d; /* Dark mode navbar color */
+    padding: 6px 6px;
+}
+
+.logo-container img {
+    width: 50px; /* Smaller logo size */
+    height: auto;
+}
+
+#nav-logo {
+    max-width: 100px;  /* Adjust as needed */
+    margin-right: 8px;
+}
+
+#search-bar {
+    width: 84%; /* Use as much width as available */
+    padding: 5px 5px;
+    border: none;
+    border-radius: 10px; /* Rounded borders for sleek design */
+    outline: none;
+    background-color: #404040; /* Darker than navbar for contrast */
+    color: #fff; /* White text for dark mode */
+    font-size: small;
+    /* placeholder-color: #777; Placeholder color */
+}
+
+#search-bar::placeholder {
+    color: #777; /* Placeholder color for dark mode */
+}
+
+select {
+    background-color: #444;
+    color: #e6e6e6;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    max-height: 812px; /* You can adjust this as per your requirement */
+    flex: 1;
+    height: 812px;
+    overflow-y: scroll;
+    padding-bottom: 10px; /* To account for the lower nav bar */
+    margin-bottom: 0;
+}
+
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: #555555;
+    border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background-color: #666666;
+}
+
+.lower-nav {
+    display: flex;
+    justify-content: space-around;  /* This will distribute the icons evenly across the width */
+    background-color: #2a2a2a;
+    padding: 15px 0;
+    position: relative;
+    border: none;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;  /* To ensure it stays on top */
+}
+
+.lower-nav a {
+    color: #666;
+    font-size: 24px;  /* Slightly bigger icons for better visibility */
+    transition: color 0.3s;
+    text-decoration: none;  /* Remove any underlines from the links */
+    border: none;  /* This ensures no border */
+    margin: 0;  /* This ensures no margin */
+    padding: 0;  /* This ensures no padding */
+    display: inline-block;  /* For consistent styling */
+}
+
+    .lower-nav a:hover {
+    color: #bbb;  /* Slight color change on hover for feedback */
+}
+
+
+

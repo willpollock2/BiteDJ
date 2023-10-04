@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepperoni Pizza Price Checker - Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Include all the CSS styling here (as in the provided code) -->
+    <style>
+        /* Insert all the styles from the original code here */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    {% extends "base.html" %}
+
+    {% block content %}
+        <div id="pizzaData"></div>
+        <h1>Results for Pepperoni Pizza</h1>
+
+        <!-- Table of Prices -->
+        <div class="scrollable-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Rating</th>
+                        <th>Business</th>
+                        <th>Est. Price</th>
+                        <th>
+                            Distance 
+                            <div class="th-subtitle">(miles)</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rankings based on prices from lowest to highest -->
+                    <tr>
+                        <td>1</td>
+                        <td>4.2</td>
+                        <td>Blaze Pizza</td>
+                        <td>$7.85</td>
+                        <td>3.1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>4.5</td>
+                        <td>OvenFresh</td>
+                        <td>$10.88</td>
+                        <td>4.8</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>3.9</td>
+                        <td>City Slice</td>
+                        <td>$11.48</td>
+                        <td>2.3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>4.7</td>
+                        <td>Domino's</td>
+                        <td>$12.09</td>
+                        <td>5.2</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>4.0</td>
+                        <td>Pizza Hut</td>
+                        <td>$12.69</td>
+                        <td>3.5</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>4.4</td>
+                        <td>Red Bench</td>
+                        <td>$13.30</td>
+                        <td>6.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Bar Chart -->
+        <div>
+            <canvas id="pizzaChart" style="width: 600px; height: 400px;"></canvas>
+        </div>
+    {% endblock %}
+
+
+        <!-- Google Maps Container -->
+        <div id="map" style="height: 400px; width: 100%; margin-bottom: 20px;"></div>
+    </div>
+
+    <!-- Google Maps Script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNBqWn9Biaw8iD3I1ImqCcjQtH92LgDsY&callback=initMap" async defer></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
